@@ -14,13 +14,15 @@ Personal finance applications will ask users to add their expenses and based on 
 
 - Collected Literature Survey
 - Designed the Problem Statement
-- Completed Assignments
+- Brainstormed Ideas
+- Completed Assignments [Batch - B2A4E-08]
   - Python Programs
-  - Flask app with Home, About, Signup and Signin Pages
-  - Responsive Resume Sites
-
+  - Execution in IDE
+    ![executioninide](Assignments/2%20-%20Execution%20in%20IDE/Execution.png)
+    
 ### Contributors
 **College: Government College of Engineering Srirangam, Trichy.**
+
 **Category: Cloud App Development**
 
 - Saran Mahadev T
