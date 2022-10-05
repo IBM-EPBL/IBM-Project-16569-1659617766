@@ -18,7 +18,6 @@ Personal finance applications will ask users to add their expenses and based on 
 - Completed Assignments [Batch - B2A4E-08]
   - Python Programs
   - Execution in IDE
-    ![executioninide](Assignments/2%20-%20Execution%20in%20IDE/Execution.png)
     
 ### Contributors
 **College: Government College of Engineering Srirangam, Trichy.**
