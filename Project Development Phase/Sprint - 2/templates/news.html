@@ -1,0 +1,52 @@
+{% extends "_layout.html" %}
+
+{% block container %}
+
+<div class="row mb-4">
+    <div class="app-search-box ">
+        <form class="app-search-form" action="" method="GET">   
+            <input type="text" placeholder="Search..." name="q" class="form-control search-input" required>
+            <button type="submit" class="btn search-btn btn-primary" value="Search">
+                <i class="bx bx-search-alt-2"></i>
+            </button> 
+        </form>
+    </div>
+</div> 
+{% for article in news["articles"] %}     
+  
+<div class="row">
+    <div class="app-card app-card-notification shadow-sm mb-4">
+        <div class="app-card-header px-4 py-3">
+            <div class="row g-3 align-items-center">
+                <div class="col-12 col-lg-auto text-center text-lg-start">						        
+                    <img class="profile-image" src="{{ article['urlToImage'] }}" alt="">
+                </div>
+                <div class="col-12 col-lg-auto text-center text-lg-start">
+                    <div class="notification-type mb-2">
+                        <span class="badge bg-info">
+                            {{ article["author"] }}
+                        </span>
+                    </div>
+                    <h4 class="notification-title mb-1">
+                        {{ article["title"] }}
+                    </h4>                                               
+                </div>
+            </div>
+        </div>
+        <div class="app-card-body p-4">
+            <div class="notification-content">
+                {{ article["description"] }}
+            </div>
+        </div>
+        <div class="app-card-footer px-4 py-3">
+            <a class="action-link" href="{{ article['url'] }}" target="_blank">Read More
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right ms-2" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"></path>
+                </svg>
+            </a>
+        </div>
+    </div>
+</div>
+
+{% endfor %}
+{% endblock %}

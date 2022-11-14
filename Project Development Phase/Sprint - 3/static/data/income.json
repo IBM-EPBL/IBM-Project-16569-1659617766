@@ -1,0 +1,34 @@
+{
+    "type": "income",
+    "count": 9,
+    "categories" : [
+        {
+            "value": "allowance",
+            "text": "Allowance🗓"
+        },{
+            "value": "awards",
+            "text": "Awards🏅"
+        },{
+            "value": "bonus",
+            "text": "Bonus🍾"
+        },{
+            "value": "dividend",
+            "text": "Dividend🔃"
+        },{
+            "value": "investment",
+            "text": "Investment📈"
+        },{
+            "value": "lottery",
+            "text": "Lottery🎫"
+        },{
+            "value": "salary",
+            "text": "Salary💳"
+        },{
+            "value": "tips",
+            "text": "Tips🤑"
+        },{
+            "value": "others",
+            "text": "Others💸"    
+        }
+    ]    
+}

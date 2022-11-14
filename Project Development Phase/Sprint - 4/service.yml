@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: pext
+spec:
+  selector:
+    app: pext
+    image: pext:1.0
+  ports:
+  - port: 5000
+    targetPort: 5000

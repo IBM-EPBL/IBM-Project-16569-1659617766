@@ -1,0 +1,46 @@
+{
+    "type": "expense",
+    "count": 9,
+    "categories" : [
+        {
+            "value": "bills",
+            "text": "Bills🧾️"
+        },{
+            "value": "clothing",
+            "text": "Clothing🧣"
+        },{
+            "value": "education",
+            "text": "Education🎓"
+        },{
+            "value": "entertainment",
+            "text":"Entertainment🎬"         
+        },{
+            "value": "fitness",
+            "text": "Fitness🏋️‍♂️"
+        },{
+            "value": "food",
+            "text": "Food🍕"
+        },{
+            "value": "gifts",
+            "text": "Gifts🎁"
+        },{
+            "value": "health",
+            "text": "Health💚"
+        },{
+            "value": "furniture",
+            "text": "Furniture💺"
+        },{
+            "value": "pets",
+            "text": "Pet🐕"
+        },{
+            "value": "shopping",
+            "text": "Shopping🛒"
+        },{
+            "value": "travel",
+            "text": "Travel✈️"
+        },{
+            "value": "other",
+            "text": "Others💰"
+        }        
+    ]    
+}

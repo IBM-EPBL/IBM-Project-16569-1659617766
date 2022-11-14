@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+    <title>
+		{{ title }}
+	</title>
+    
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="description" content="PEXT - Personal Expense Tracker Application which is used to track and manage expenses in one portal.">
+    <meta name="author" content="Xiaoying Riley at 3rd Wave Media">    
+    <link rel="shortcut icon" href="/favicon.ico"> 
+    
+    <!-- Boxicons-->
+    <link rel="stylesheet" href="/static/vendor/boxicons/css/boxicons.min.css">
+
+    <!-- App CSS -->  
+    <link rel="stylesheet" href="/static/vendor/bootstrap/css/bootstrap.min.css">
+    <link id="theme-style" rel="stylesheet" href="/static/css/portal.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+
+    {% block head %}
+    {% endblock %}
+</head> 
+
+<body class="app">   	
+    <header class="app-header fixed-top">	   	            
+        {% include "partials/_topbar.html" %}
+        {% include "partials/_sidebar.html" %}        
+    </header>
+    
+    <div class="app-wrapper">	    
+	    <div class="app-content pt-3 p-md-3 p-lg-4">
+		    <div class="container-xl">			    
+			    <h1 class="app-page-title">
+                    {{ title }}
+                </h1>			    
+			    {% block container %}
+                {% endblock %}			    
+		    </div>
+	    </div>	    
+    </div>
+
+    {% include "partials/_modals.html" %}        
+
+    
+    <!-- Javascript -->          
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="/static/vendor/popper.min.js"></script>
+    <script src="/static/vendor/bootstrap/js/bootstrap.min.js"></script>  
+    <script src="/static/vendor/sweetalert/sweetalert2.all.min.js"></script>
+    <!-- Page Specific JS -->
+    <script src="/static/js/app.js"></script> 
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+          new google.translate.TranslateElement(
+            {
+                pageLanguage: 'en', 
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 
+                'google_translate_element'
+            );
+        }
+    </script>
+    {% block foot %}
+    {% endblock %}
+</body>
+</html> 
+

@@ -1,0 +1,93 @@
+{% extends "_layout.html" %}
+
+{% block container %}
+<a href="#" style="float: left;" class="app-btn-secondary" data-bs-toggle="modal" data-bs-target="#BudgetModal">
+    <i class="bx bx-list-plus"></i>
+</a> 
+<div class="row g-4 mb-4">      
+        {% for budget in budgets["data"] %}                            
+            <div class="col-6 col-lg-4" id="budget-{{ budget[0] }}">                
+                <div class="app-card app-card-stat shadow-sm h-100" >
+                    <a href="#" class="text-danger" onclick="deleteBudget('{{ budget[0] }}')" style="float: left;">
+                        <i class="bx bx-trash"></i>   
+                    </a>
+                    <div class="app-card-body p-3 p-lg-4">
+                        <h4 class="stats-type mb-1">
+                            {{ budget[1] }} [₹{{ budget[3] }}]  
+                        </h4>
+                        <div class="stats-figure">
+                            {% for wallet in wallets["data"] %}                               
+                                {% if wallet[0] == budget[4] %}                                                                        
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: {{ int((wallet[2] / budget[3])*100) }}%" aria-valuenow="{{ int((wallet[2] / budget[3])*100) }}" aria-valuemin="0" aria-valuemax="100"></div>                                        
+                                    </div>                                    
+                                {% endif %}                                    
+                            {% endfor %}
+                            <h4 class="stats-type mb-1" style="float: right;">
+                                Expires on {{ budget[2] }}
+                            </h4>
+                            
+                        </div>                
+                    </div>
+                </div>
+            </div>                
+        
+        {% endfor %}
+    </div>    
+</div>
+{% endblock %}
+
+{% block foot %}
+<script>
+    function deleteBudget(bid) {
+        var form = new FormData();        
+        form.append("bid", bid);
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                Swal.fire({
+                icon: 'success',                
+                text: 'Deleted Budget!',
+                }).then((r) => {
+                    document.getElementById(`budget-${bid}`).remove();
+                })
+            }
+        };
+        xhttp.open("POST", "/delete/budget", true);
+        xhttp.send(form);
+    }
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {				
+            JSON.parse(this.responseText).data.forEach(element => {
+                var opt = document.createElement('option');
+                opt.value = element[0];
+                opt.innerHTML = `${element[1]} [${element[2]}]`;
+                document.getElementById("bwallet").append(opt);			
+            });
+        }
+    };
+    xhttp.open("POST", "/get/wallet?wid=all", true);
+    xhttp.send();
+
+
+    document.getElementById("BudgetForm").addEventListener("submit", function (e) {
+        e.preventDefault();
+        var form = new FormData(this);        
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                Swal.fire({
+                icon: 'success',                
+                text: 'Budget Plan Added!',
+                }).then((r) => {
+                    window.location.reload();
+                })
+            }
+        };
+        xhttp.open("POST", "/add/budget", true);
+        xhttp.send(form);
+    })
+</script>
+{% endblock %}

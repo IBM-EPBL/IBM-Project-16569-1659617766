@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PEXT | Auth</title>    
+    <link href='/static/vendor/boxicons/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="/static/css/login.css">
+</head>
+<body>
+    <div class="login">
+        <div class="login__content">
+            <div class="login__img">
+                <img src="/static/img/login.svg" alt="">
+            </div>
+            <div class="login__forms">
+                <form class="login__register" id="loginInForm">
+                    <h1 class="login__title">Sign In</h1>
+                    <div class="login__box">
+                        <i class='bx bx-user login__icon'></i>                        
+                        <input type="text" id="lusername" name="lusername" placeholder="Username" minlength="4" maxlength="15" class="login__input" required>
+                    </div>
+                    <div class="login__box">
+                        <i class='bx bx-lock-alt login__icon'></i>
+                        <input type="password" id="lpassword" name="lpassword" placeholder="Password" class="login__input" required>
+                    </div>
+                    <a href="#" class="login__forgot">Forgot password?</a>
+                    <center>
+                        <button type="submit"class="login__button">Submit</button>
+                    </center>
+                    <div>
+                        <span class="login__account">Don't have an Account ?</span>
+                        <span class="login__signin" id="sign-up">Sign Up</span>
+                    </div>
+                </form>
+                <form action="" class="login__create none" id="loginUpForm">
+                    <h1 class="login__title">Create Account</h1>
+                    <div class="login__box">
+                        <i class='bx bx-user login__icon'></i>
+                        <input type="text" id="susername" name="susername" placeholder="Username" minlength="4" maxlength="15" class="login__input" required>
+                    </div>
+                    <div class="login__box">
+                        <i class='bx bx-at login__icon'></i>
+                        <input type="email" id="semail" name="semail" placeholder="Email" class="login__input" required>
+                    </div>
+                    <div class="login__box">
+                        <i class='bx bx-lock-alt login__icon'></i>
+                        <input type="password" id="spassword" name="spassword" placeholder="Password" class="login__input">
+                    </div>
+                    <center>
+                        <button type="submit"class="login__button">Submit</button>
+                    </center>
+                    <div>
+                        <span class="login__account">Already have an Account ?</span>
+                        <span class="login__signup" id="sign-in">Sign In</span>
+                    </div>                   
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/vendor/sweetalert/sweetalert2.all.min.js"></script>
+    <script src="/static/js/login.js"></script>
+    
+</body>
+</html>
