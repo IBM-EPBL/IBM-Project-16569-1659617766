@@ -1,0 +1,102 @@
+{% extends "_layout.html" %}
+
+{% block container %}
+<select class="form-select" id="calcSelect" aria-label="Default select example">
+    <option selected>Select Calculator</option>    
+    <option value="loan">
+        Loan Calculator
+    </option>
+    <option value="investment">
+        Investment Calculator
+    </option>
+</select>
+<hr>
+<div class="app-card mb-3" id="calcArea">
+</div>
+
+    
+
+
+{% endblock %}
+
+{% block foot %}
+<script>
+    document.getElementById("calcSelect").addEventListener("change", function (e) {
+        e.preventDefault();
+        if (this.value == "loan") {
+            document.getElementById("calcArea").innerHTML = `
+            <form id="Loan" onsubmit="calcLoan(this)">
+                <div class="container">
+                    <div class="mb-3">
+                        <input type="number" class="form-control" id="PrincipalAmount" placeholder="₹ Amount" required>        
+                    </div>
+                    <div class="mb-3">
+                        <input type="number" class="form-control" id="Interest" placeholder="% Interest" required>                
+                    </div>
+                    <div class="mb-3">
+                        <input type="number" class="form-control" id="months" placeholder="% Interest" required>                
+                    </div>
+                    <div class="mb-3">
+                        <input type="submit" class="form-control" value="Calculate">                
+                    </div>
+                </div>
+            </form>
+            `;
+        } else if (this.value == "investment") {
+            document.getElementById("calcArea").innerHTML = `
+            <form id="Investment" onsubmit="calcInvestment(this)">
+                <div class="container">
+                    <div class="mb-3">
+                        <input type="number" class="form-control" id="PrincipalAmount" placeholder="₹ Amount" required>        
+                    </div>
+                    <div class="mb-3">
+                        <input type="number" class="form-control" id="Interest" placeholder="% Interest" required>                
+                    </div>
+                    <div class="mb-3">
+                        <input type="number" class="form-control" id="Years" placeholder="Years" required>                
+                    </div>
+                    <div class="mb-3">
+                        <input type="submit" class="form-control" value="Calculate">                
+                    </div>
+                </div>
+            </form>
+            `;            
+        }
+    })
+
+    function calcLoan(e) {
+        e.preventDefault();
+        var amount = document.getElementById("PrincipalAmount").value;
+        var rate = document.getElementById("Interest").value;
+        var months = document.getElementById("months").value;
+        var interest = (amount * (rate * 0.01)) / months;
+        var total = (amount / months) + interest;
+        total = Math.round(total * 100) / 100;
+        Swal.fire({
+            icon: 'info',                
+            text: `Total Payment (Per Month) is ₹${total}`,
+        });
+    }
+
+    
+    function calcInvestment(e) {        
+        e.preventDefault();
+        var amount = document.getElementById("PrincipalAmount").value;
+        var rate = document.getElementById("Interest").value;
+        var years = document.getElementById("Years").value;
+
+        var total = [amount * (rate / 100) * years];
+        var grandTotal = parseFloat(total) + parseFloat(amount);
+        grandTotal = Math.round(grandTotal * 100) / 100;
+        grandTotal = grandTotal.toFixed(2);
+
+        Swal.fire({
+            icon: 'info',                
+            text: `Total Yield is ₹${grandTotal}`,
+        });
+    }
+    
+    
+
+</script>
+{% endblock %}

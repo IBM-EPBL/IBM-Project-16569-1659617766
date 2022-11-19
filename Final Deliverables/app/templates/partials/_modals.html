@@ -1,0 +1,83 @@
+<div class="modal fade" id="IncExpModal" tabindex="-1" aria-labelledby="IncExpModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h1 class="modal-title fs-5" id="IncExpModalLabel">Add Income/Expense</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form id="IncExpForm">
+                <input  type="date" id="date" name="date" class="form-control mb-3" required>
+                <input type="text" id="descp" name="descp" placeholder="Enter Description" class="form-control mb-3" required>
+                <select name="wallet" id="wallet" class="form-control mb-3" required>			
+                    <option value="0" selected disabled>Select Wallet</option>                    	
+                </select>
+                <select name="ttype" id="ttype" class="form-control mb-3" required>			
+                    <option value="0" selected disabled>Select Income/Expense</option>	
+                    <option value="income">Income</option>
+                    <option value="expense">Expense</option>
+                </select>
+                <select name="category" id="category" class="form-control mb-3" required>			
+                    <option value="0" selected disabled>Select Category</option>                    	
+                </select>                
+                <input type="text" class="form-control" placeholder="Amount" id="amount" name="amount" required>
+                <input type="file" class="form-control" accept=".png, .jpg, .jpeg" style="display:none;" onchange="encodeImageFileAsURL(this)" id="fileattachment">
+                <hr>
+                <label style="float:left;cursor: crosshair;" for="fileattachment" id="fileattachmentLabel">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-pin-map-fill" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M3.1 11.2a.5.5 0 0 1 .4-.2H6a.5.5 0 0 1 0 1H3.75L1.5 15h13l-2.25-3H10a.5.5 0 0 1 0-1h2.5a.5.5 0 0 1 .4.2l3 4a.5.5 0 0 1-.4.8H.5a.5.5 0 0 1-.4-.8l3-4z"/>
+                        <path fill-rule="evenodd" d="M4 4a4 4 0 1 1 4.5 3.969V13.5a.5.5 0 0 1-1 0V7.97A4 4 0 0 1 4 3.999z"/>
+                    </svg>
+                    Attach
+                </label>                
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" form="IncExpForm" id="IncExpFormBtn" class="btn btn-success">Add</button>
+        </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="BudgetModal" tabindex="-1" aria-labelledby="BudgetModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h1 class="modal-title fs-5" id="BudgetModalLabel">Set Budget</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form id="BudgetForm">
+                <label for="date">Till:</label>
+                <input type="text" class="form-control mb-3" placeholder="Give a name" id="name" name="name" required>                            
+                <input  type="date" id="date" name="date" class="form-control mb-3" required>                                             
+                <input type="text" class="form-control mb-3" placeholder="Amount" id="amount" name="amount" required>                            
+                <select name="wallet" id="bwallet" class="form-control mb-3" required>			
+                    <option value="0" selected disabled>Select Wallet</option>                    	
+                </select>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" form="BudgetForm" class="btn btn-success">Add</button>
+        </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="ImageModal" tabindex="-1" aria-labelledby="ImageModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <img src="" id="modalImage" class="img-fluid">
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+        </div>
+    </div>
+</div>

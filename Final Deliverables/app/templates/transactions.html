@@ -1,0 +1,90 @@
+{% extends "_layout.html" %}
+
+{% block container %}
+<div class="app-card shadow-sm mb-2">
+    <div class="app-card-body">
+        <div class="table-responsive">
+            <table class="table app-table-hover mb-0 text-left" id="transcAllTable">
+                <thead>
+                    <tr>
+                        <th class="cell">Date</th>
+                        <th class="cell">Description</th>                               
+                        <th class="cell">Amount</th>
+                        <th class="cell">Category</th>
+                        <th class="cell">Income/Expense</th>
+                        <th class="cell">
+                            <i class="bx bx-cog"></i>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for transaction in transactions["data"] %} 
+                        <tr id="transaction-{{ transaction[0] }}">
+                            <td class="cell">
+                                <span>
+                                    {{ transaction[1] }}
+                                </span>                                    
+                            </td>
+                            <td class="cell">
+                                <span class="truncate">
+                                    {{ transaction[2] }}
+                                </span>
+                            </td>
+                            <td class="cell">
+                                {{ transaction[6] }}                                    
+                            </td>
+                            <td class="cell">
+                                {{ transaction[5] }}   
+                            </td>
+                            <td class="cell">                                    
+                                {% if transaction[4] == "income" %}
+                                    <span class="badge bg-success">Income</span>
+                                {% else %}
+                                    <span class="badge bg-danger">Expense</span>
+                                {% endif %}                                    
+                            </td>
+                            <td class="cell">
+                                <a class="btn-sm" href="#" onclick="deleteTransaction('{{ transaction[0] }}')" style="color:red;">
+                                    <i class="bx bx-trash-alt"></i>
+                                </a>                              
+                                {% if transaction[7] != "None" %}
+                                <a class="btn-sm" href="#" onclick="setModalImge('{{ transaction[7] }}')" style="color:blueviolet;" data-bs-toggle="modal" data-bs-target="#ImageModal">
+                                    <i class="bx bx-image-alt"></i>
+                                </a>  
+                                {% endif %}                                                    
+                            </td>
+                        </tr>                           
+                    {% endfor %}                        
+                </tbody>
+            </table>
+        </div>               
+    </dv>		
+</div> 
+
+{% endblock %}
+
+
+{% block foot %}
+<script>
+    $(document).ready( function () {
+        $('#transcAllTable').DataTable();	        	
+    });
+
+    function deleteTransaction(tid) {
+        var form = new FormData();
+        form.append("tid", tid);
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById(`transaction-${tid}`).remove();
+            }
+        };
+        xhttp.open("POST", "/delete/transaction", true);
+        xhttp.send(form);
+    }
+
+    function setModalImge(src) {
+        document.getElementById("modalImage").src = src;                  
+    }
+</script>
+{% endblock %}
